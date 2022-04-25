@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ui-tests
+  labels:
+    app: ui-tests
+spec:
+  serviceAccountName: ui-tests
+  securityContext:
+    fsGroup: 1000
+  containers:
+  - name: ui-tests
+    image: europe-west2-docker.pkg.dev/ssdc-rm-liamt-spike/docker/ssdc-rm-ui-tests:latest
+    tty: true
+    stdin: true
+    imagePullPolicy: Always
+    resources:
+      requests:
+        cpu: "250m"
+        memory: "128Mi"
+      limits:
+        cpu: "250m"
+        memory: "256Mi"
+    env:
+    - name: PROJECT_NAME
+      valueFrom:
+        configMapKeyRef:
+          name: project-config
+          key: project-name
+
+      # TODO: Maybe just pass this in on the command line when Cypress runs like
+      # TODO:    CYPRESS_BASE_URL=http://response-operations:80 npx cypress run` - might need to make this https???
+#    - name: RESPONSE_OPERATIONS_HOST
+#      value: "response-operations"
+#    - name: RESPONSE_OPERATIONS_PORT
+#      value: "80"
