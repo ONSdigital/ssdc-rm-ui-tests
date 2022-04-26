@@ -9,6 +9,7 @@ params:
   SERVICE_ACCOUNT_JSON:
   GCP_PROJECT_NAME:
   KUBERNETES_CLUSTER:
+  RESPONSE_OPERATIONS_URL:
 
 inputs:
 - name: ui-tests-repo
@@ -34,4 +35,4 @@ run:
 
       # The sleep is to give kubectl time to attach properly, otherwise the first few log lines are lost
       kubectl exec -it ui-tests -- /bin/bash -c \
-      "sleep 2; CYPRESS_BASE_URL=http://response-operations:80 npx cypress run"
+      "sleep 2; CYPRESS_BASE_URL=${RESPONSE_OPERATIONS_URL} npx cypress run"
