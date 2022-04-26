@@ -28,8 +28,14 @@ run:
       gcloud container clusters get-credentials ${KUBERNETES_CLUSTER} --zone europe-west2 --project ${GCP_PROJECT_NAME}
 
 
+
+      sudo apt update && sudo apt install dnsutils
       IP_ADDRESS="$(dig -4 +short myip.opendns.com @resolver1.opendns.com)"
       echo $IP_ADDRESS
+
+
+
+
 
       kubectl delete pod ui-tests --wait || true
 
