@@ -16,21 +16,8 @@ spec:
     imagePullPolicy: Always
     resources:
       requests:
-        cpu: "250m"
-        memory: "128Mi"
+        cpu: "1"
+        memory: "1Gi"
       limits:
-        cpu: "250m"
-        memory: "256Mi"
-    env:
-    - name: PROJECT_NAME
-      valueFrom:
-        configMapKeyRef:
-          name: project-config
-          key: project-name
-
-      # TODO: Maybe just pass this in on the command line when Cypress runs like
-      # TODO:    CYPRESS_BASE_URL=http://response-operations:80 npx cypress run` - might need to make this https???
-#    - name: RESPONSE_OPERATIONS_HOST
-#      value: "response-operations"
-#    - name: RESPONSE_OPERATIONS_PORT
-#      value: "80"
+        cpu: "1"
+        memory: "1Gi"
