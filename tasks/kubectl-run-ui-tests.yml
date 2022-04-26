@@ -27,6 +27,10 @@ run:
       gcloud auth activate-service-account --key-file ~/gcloud-service-key.json
       gcloud container clusters get-credentials ${KUBERNETES_CLUSTER} --zone europe-west2 --project ${GCP_PROJECT_NAME}
 
+
+      IP_ADDRESS="$(dig -4 +short myip.opendns.com @resolver1.opendns.com)"
+      echo $IP_ADDRESS
+
       kubectl delete pod ui-tests --wait || true
 
       kubectl apply -f ui-tests-repo/ui_tests_pod.yml
