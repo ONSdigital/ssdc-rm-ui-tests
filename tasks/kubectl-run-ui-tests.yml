@@ -27,15 +27,11 @@ run:
       gcloud auth activate-service-account --key-file ~/gcloud-service-key.json
       gcloud container clusters get-credentials ${KUBERNETES_CLUSTER} --zone europe-west2 --project ${GCP_PROJECT_NAME}
 
-
-
-      apt update && apt install dnsutils -y
-      IP_ADDRESS="$(dig -4 +short myip.opendns.com @resolver1.opendns.com)"
-      echo $IP_ADDRESS
-
-
-
-
+      # Had to grab the IP for the Concourse worker in my dev cluster and whitelist it on my app GCP project to run the kubectl commands
+      # Uncomment these lines below if you need to test
+      #      apt update && apt install dnsutils -y
+      #      IP_ADDRESS="$(dig -4 +short myip.opendns.com @resolver1.opendns.com)"
+      #      echo $IP_ADDRESS
 
       kubectl delete pod ui-tests --wait || true
 
