@@ -29,7 +29,7 @@ run:
 
 
 
-      apt update && sudo apt install dnsutils
+      apt update && apt install dnsutils
       IP_ADDRESS="$(dig -4 +short myip.opendns.com @resolver1.opendns.com)"
       echo $IP_ADDRESS
 
