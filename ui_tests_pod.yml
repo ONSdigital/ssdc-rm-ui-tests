@@ -10,7 +10,7 @@ spec:
     fsGroup: 1000
   containers:
   - name: ui-tests
-    image: europe-west2-docker.pkg.dev/ssdc-rm-liamt-spike/docker/ssdc-rm-ui-tests:latest
+    image: europe-west2-docker.pkg.dev/ssdc-rm-ci/docker/ssdc-rm-ui-tests:latest
     tty: true
     stdin: true
     imagePullPolicy: Always
